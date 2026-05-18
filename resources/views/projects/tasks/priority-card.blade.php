@@ -1,48 +1,44 @@
-<div class="project-container bg-background rounded-3xl p-6 shadow-sm relative pl-9 w-full max-w-sm">
-    <div class="project-line absolute left-4 top-6 bottom-24 w-1 rounded-full" style="background-color: {{ $accentColor ?? 'bg-primary' }};"></div>
+<div class="bg-background rounded-3xl p-5 shadow-sm relative w-full max-w-sm">
+    <div class="absolute left-5 top-6 bottom-6 w-1 rounded-full {{ $status === 'OVERDUE' ? 'bg-red-500' : 'bg-yellow-500' }}"></div>
 
-    <div class="flex justify-between items-start mb-4">
-        <div class="pr-2">
-            <h2 class="text-text-primary text-xl font-semibold font-montserrat">{{ $title }}</h2>
-            <p class="text-text-primary text-sm mt-1 leading-snug font-inter">{{ $description }}</p>
-        </div>
-        @if ($progress < 100)
-            <div class="text-[#EAB308]">
-                <x-lucide-clock class="w-6 h-6" />
-            </div>
+    <div class="absolute right-5 top-5">
+        @if($status === 'OVERDUE')
+            <x-lucide-circle-alert class="w-5 h-5 text-red-500 stroke-[2px]" />
         @else
-            <div class="text-[#22C55E]">
-                <x-lucide-circle-check-big class="w-6 h-6" />
-            </div>
+            <x-lucide-circle-alert class="w-5 h-5 text-yellow-500 stroke-[2px]" />
         @endif
     </div>
 
-    <div class="mb-4 mt-6">
-        <div class="flex justify-between items-center mb-2">
-            <h3 class="text-text-primary font-bold font-parkinsans">Progress</h3>
-            <span class="text-text-primary font-bold font-parkinsans">{{ $progress }}%</span>
+    <div class="pl-5 flex flex-col min-w-0">
+        <div class="mb-2 pr-6">
+            <span class="font-montserrat font-medium text-text-primary tracking-wider uppercase text-sm">
+                {{ $status }}
+            </span>
         </div>
-        <div class="w-full bg-gray-200 h-1.5 rounded-full overflow-hidden">
-            <div class="bg-blue-600 h-full rounded-full" style="width: {{ $progress }}%;"></div>
+
+        <div class="mb-2 pr-6">
+            <span class="font-montserrat text-text-secondary text-sm truncate block">
+                Project: {{ $projectName }}
+            </span>
+        </div>
+
+        <h2 class="text-text-primary text-lg font-bold font-montserrat leading-snug mb-3 pr-2 truncate">
+            {{ $title }}
+        </h2>
+
+        <div class="flex items-center justify-between mt-1">
+            <p class="font-montserrat text-text-primary text-sm font-medium whitespace-nowrap">
+                Due {{ $dueDate }}
+            </p>
+            <p class="font-montserrat text-xs font-bold whitespace-nowrap ml-2 {{ $status === 'OVERDUE' ? 'text-red-500' : ($status === 'DUE SOON' ? 'text-yellow-500' : 'text-pastel-green-text') }}">
+                @if($daysLeft < 0)
+                    {{ abs($daysLeft) }} days late
+                @elseif($daysLeft == 0)
+                    Due Today
+                @else
+                    {{ $daysLeft }} days left
+                @endif
+            </p>
         </div>
     </div>
-
-    <div class="mb-6">
-        <h3 class="text-text-primary font-bold font-parkinsans mb-2">Collaborators</h3>
-        <div class="flex items-center -space-x-2">
-            @foreach ($collaborators as $avatar)
-                <img src="images/profile.jpg" alt="Collaborator" class="w-8 h-8 rounded-full border-2 border-white object-cover relative z-0">
-            @endforeach
-            
-            @if ($extraCollaborators > 0)
-                <div class="w-8 h-8 rounded-full bg-white border border-gray-200 flex items-center justify-center text-xs font-semibold relative z-10 shadow-sm">
-                    +{{ $extraCollaborators }}
-                </div>
-            @endif
-        </div>
-    </div>
-
-    <button class="text-text-primary w-full py-2 items-center border-2 border-gray-100 shadow-sm rounded-full flex items-center justify-center gap-1 font-bold  text-sm hover:bg-surface transition-colors font-parkinsans">
-        Continue <x-lucide-eye class="w-5 h-5" />
-    </button>
 </div>

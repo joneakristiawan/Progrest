@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
     containers.forEach(container => {
         const line = container.querySelector('.project-line');
 
-        const height = container.getBoundingClientRect().height - 47;
+        const height = container.getBoundingClientRect().height - 44;
         line.style.height = `${height}px`;
     });
 });
