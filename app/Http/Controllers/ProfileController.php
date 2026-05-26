@@ -3,14 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Project;
 
 class ProfileController extends Controller
 {
-    public function __construct(){
-        $this->middleware('auth');
-    }
-    
     public function index() {
+
         $menu = [
             [
                 'navigations' => [
@@ -20,8 +18,10 @@ class ProfileController extends Controller
                     ['name' => 'Profiles', 'path' => '/profile']
                 ]
             ]
-        ]; 
+        ];
 
-        return view('profile.index', compact('menu')); 
+        $projects = Project::all();
+
+        return view('profile.index', compact('menu', 'projects')); 
     }
 }
