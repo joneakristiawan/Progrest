@@ -1,14 +1,16 @@
 <?php
 
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\CollabController;
+use App\Http\Controllers\AuthController; 
+use App\Http\Controllers\CollabController; 
 
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\ProjectController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DashboardController; 
+use App\Http\Controllers\ProfileController; 
+use App\Http\Controllers\ProjectController; 
+use Illuminate\Support\Facades\Route; 
 
-
+Route::get('/test-speed', function(){
+    return 'Hello World'; 
+}); 
 
 Route::get('/', function() {
     return view('landing.index'); 

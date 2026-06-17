@@ -65,15 +65,13 @@
 @endphp
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-
 <div class="p-4 md:p-8 pt-6 max-w-7xl mx-auto">
-    
-    <div id="dashboard-header" class="bg-background rounded-[2rem] p-4 px-6 mb-8 shadow-sm border-[1.5px] border-border flex justify-between items-center">
+    <div id="dashboard-header" class="bg-background rounded-4xl p-4 px-6 mb-8 shadow-sm border-[1.5px] border-border flex justify-between items-center">
         <div class="flex items-center gap-4">
             <img src="{{ asset('images/profile.jpg') }}" alt="Profile" class="w-14 h-14 rounded-full object-cover shadow-sm border-[3px] border-border">
             <div>
                 <h1 class="font-montserrat text-2xl font-bold text-text-primary">
-                    Welcome Back, <span class="text-primary">@auth {{ auth()->user()->username }} @else Collab1 @endauth</span>
+                    Welcome Back, <span class="text-primary">@auth {{ auth()->user()->username }} @endauth</span>
                 </h1>
                 <p class="font-montserrat text-sm text-text-secondary mt-0.5">Start making progress and collab</p>
             </div>
@@ -97,45 +95,45 @@
         
         <div class="lg:col-span-2 flex flex-col gap-8">
             
-            <div id="dashboard-stats" class="bg-primary rounded-[2rem] p-5 shadow-md">
-                <div class="flex items-center justify-between text-white mb-5 px-3">
-                    <div class="flex gap-4">
+            <div id="dashboard-stats" class="bg-primary rounded-4xl px-5 pt-3 pb-5 shadow-md">
+                <div class="flex items-center justify-between text-white mb-2 px-3">
+                    <div class="flex gap-2">
                         <button id="share-btn" class="focus:outline-none hover:opacity-70 transition-opacity" title="Download Statistics">
                             <x-lucide-share-2 class="w-5 h-5" />
                         </button>
                     </div>
-                    <span class="font-montserrat font-bold text-lg">Account Statistics</span>
+                    <span class="font-montserrat font-bold text-xl">Account Statistics</span>
                     <div class="w-14"></div>
                 </div>
                 
-                <div class="bg-background rounded-2xl p-6 grid grid-cols-2 md:grid-cols-4 gap-4 divide-y md:divide-y-0 md:divide-x divide-border shadow-inner">
+                <div class="bg-surface rounded-2xl px-6 py-4 grid grid-cols-2 md:grid-cols-4 gap-2 divide-y md:divide-y-0 md:divide-x divide-border shadow-inner">
                     <div class="flex flex-col items-center justify-center">
                         <div class="flex items-center gap-1.5 text-primary font-parkinsans font-bold text-4xl">
                             <x-lucide-zap class="w-7 h-7 fill-current" /> {{ $statistics['login_streak']['current'] }}
                         </div>
-                        <p class="font-montserrat font-bold text-text-primary text-sm mt-2">Login Streak</p>
-                        <p class="text-xs text-text-secondary font-montserrat mt-0.5"><span class="font-bold text-text-primary">{{ $statistics['login_streak']['best'] }}</span> Best</p>
+                        <p class="font-montserrat font-bold text-text-primary text-md mt-2">Login Streak</p>
+                        <p class="text-sm text-text-secondary font-montserrat mt-0.5"><span class="font-bold text-text-primary">{{ $statistics['login_streak']['best'] }}</span> Best</p>
                     </div>
                     <div class="flex flex-col items-center justify-center pt-4 md:pt-0">
                         <div class="flex items-center gap-2 text-primary font-parkinsans font-bold text-4xl">
                             <x-lucide-file-text class="w-7 h-7" /> {{ $statistics['projects_completed'] }}
                         </div>
-                        <p class="font-montserrat font-bold text-text-primary text-sm mt-2">Projects</p>
-                        <p class="text-xs text-text-secondary font-montserrat mt-0.5">Completed</p>
+                        <p class="font-montserrat font-bold text-text-primary text-md mt-2">Projects</p>
+                        <p class="text-sm text-text-secondary font-montserrat mt-0.5">Completed</p>
                     </div>
                     <div class="flex flex-col items-center justify-center pt-4 md:pt-0">
                         <div class="flex items-center gap-2 text-primary font-parkinsans font-bold text-4xl">
                             <x-lucide-users class="w-7 h-7" /> {{ $statistics['collabs_completed'] }}
                         </div>
-                        <p class="font-montserrat font-bold text-text-primary text-sm mt-2">Collabs</p>
-                        <p class="text-xs text-text-secondary font-montserrat mt-0.5">Completed</p>
+                        <p class="font-montserrat font-bold text-text-primary text-md mt-2">Collabs</p>
+                        <p class="text-sm text-text-secondary font-montserrat mt-0.5">Completed</p>
                     </div>
                     <div class="flex flex-col items-center justify-center pt-4 md:pt-0">
                         <div class="flex items-center gap-1.5 text-primary font-parkinsans font-bold text-4xl">
                             <span class="bg-primary text-white rounded-full w-7 h-7 flex items-center justify-center text-base">P</span> {{ $statistics['points']['current'] }}
                         </div>
-                        <p class="font-montserrat font-bold text-text-primary text-sm mt-2">Points</p>
-                        <p class="text-xs text-text-secondary font-montserrat mt-0.5"><span class="font-bold text-text-primary">{{ $statistics['points']['highest'] }}</span> Highest</p>
+                        <p class="font-montserrat font-bold text-text-primary text-md mt-2">Points</p>
+                        <p class="text-sm text-text-secondary font-montserrat mt-0.5"><span class="font-bold text-text-primary">{{ $statistics['points']['highest'] }}</span> Highest</p>
                     </div>
                 </div>
             </div>
