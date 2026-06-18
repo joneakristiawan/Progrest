@@ -30,7 +30,46 @@
             'title' => 'Set the Whole Concept',
             'dueDate' => '16/05/26',
             'daysLeft' => 1,
-        ]
+        ],
+        
+    ];
+
+    $allTasks = [
+        [
+            'title' => 'Overall Home Page Concept',
+            'priority' => 'Medium',
+            'priorityColor' => 'bg-yellow-400',
+            'dueDate' => '11/04/26',
+            'assignee' => 'Ziu Rama',
+            'avatar' => $avatarPath,
+            'image' => null,
+            'lineColor' => 'bg-green-500',
+            'icon' => '<svg></svg>',
+        ],
+
+        [
+            'title' => 'Make Home Page Prototype',
+            'priority' => 'High',
+            'priorityColor' => 'bg-red-500',
+            'dueDate' => '13/04/26',
+            'assignee' => 'Kevin Jio',
+            'avatar' => $avatarPath,
+            'image' => asset("images/prototype.png"),
+            'lineColor' => 'bg-black',
+            'icon' => '<svg></svg>',
+        ],
+
+        [
+            'title' => 'Correcting the Buttons Color',
+            'priority' => 'Low',
+            'priorityColor' => 'bg-indigo-500',
+            'dueDate' => '13/04/26',
+            'assignee' => 'Jonea',
+            'avatar' => $avatarPath,
+            'image' => null,
+            'lineColor' => 'bg-black',
+            'icon' => '<svg></svg>',
+        ],
     ];
     @endphp
 
@@ -88,7 +127,7 @@
             </form>
 
             {{-- CREATE TASK PANEL --}}
-            <button onclick="openPanel()" class="bg-quartiary rounded-full px-6 py-2 h-fit flex items-center shadow-sm gap-2 hover:bg-quartiary-hover active:scale-95 text-sm md:text-base whitespace-nowrap">
+            <button onclick="openPanel()" @click="showCreateModal = true" class="bg-quartiary rounded-full px-6 py-2 h-fit flex items-center shadow-sm gap-2 hover:bg-quartiary-hover active:scale-95 text-sm md:text-base whitespace-nowrap">
                 <span class="font-montserrat text-white text-md">Create Task</span>
                 <div class="bg-primary rounded-full text-white p-0.5 flex items-center justify-center shrink-0">
                     <x-lucide-plus class="w-5 stroke-[2.5px]" />
@@ -98,7 +137,7 @@
     </div>
 
     {{-- PRIORITY TASKS --}}
-    <div class="p-8">
+    <div x-data="{showTaskModal:false, showCreateModal:false}" class="p-8">
         <h1 class="font-montserrat text-text-primary text-2xl font-bold">Priority Tasks</h1>
         
         <div class="flex flex-nowrap overflow-x-auto gap-5 mt-4">
@@ -172,7 +211,9 @@
         </div>
 
         <div class="grid  grid-cols-1 md:grid-cols-2 gap-6 lg:grid-cols-3">
-            
+            @foreach ($allTasks as $task)
+                @include('projects.tasks.all-task', $task)
+            @endforeach
         </div>
     </div>
 @endsection 
