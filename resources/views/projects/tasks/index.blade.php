@@ -158,7 +158,6 @@
 
 
     {{-- TASKS LIST --}}
-
     <div class="px-8 py-6">
         <div class="flex justify-between items-center">
             <h1 class="font-montserrat text-text-primary text-2xl font-bold">All Task</h1>
@@ -210,7 +209,7 @@
             </div>
         </div>
 
-        <div class="grid  grid-cols-1 md:grid-cols-2 gap-6 lg:grid-cols-3">
+        <div class="grid  grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
             @foreach ($allTasks as $task)
                 @include('projects.tasks.all-task', $task)
             @endforeach

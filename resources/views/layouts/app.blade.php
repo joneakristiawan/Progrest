@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@yield('title')</title>
-    <link rel="icon" href="images/progrest_p_logo_green.png">
+    <link rel="icon" type="image/png" href="{{ asset('images/progrest_p_logo_white.png') }}">
     
     @vite(['resources/css/app.css', 'resources/js/app.js']) 
     <script>

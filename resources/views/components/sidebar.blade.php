@@ -9,18 +9,18 @@
     </button>
 
     <img id="app-logo"
-        src="images/progrest_logo_green.png"
+        src="{{ asset('images/progrest_logo_green.png') }}"
         class="w-30 h-auto mt-2 transition-all duration-300">
 
     <img id="app-logo-p"
-        src="images/progrest_p_logo_green.png"
+        src="{{ asset('images/progrest_p_logo_green.png') }}"
         class="hidden w-9 h-auto mt-13 mx-auto transition-all duration-300">
 
     <div class="w-full h-px bg-border rounded-xl"></div>
 
     <div class="sidebar-profile flex gap-3 border-[1.5px] p-2 border-border rounded-xl shadow-sm items-center bg-background">
         <div class="w-12 h-12 aspect-square flex-shrink-0 rounded-full border border-border">
-            <img src="images/profile.jpg" class="w-full h-full rounded-full sidebar-icon object-cover">
+            <img src="{{ asset('images/profile.jpg') }}" class="w-full h-full rounded-full sidebar-icon object-cover">
         </div>
         <div class="flex flex-col justify-center sidebar-text">
             <p class="font-montserrat font-bold text-text-primary text-sm">
