@@ -94,8 +94,6 @@
                 @include('components.footer')
             </main>
         </div>
-
-        
     </div>
 
     {{-- OPENED PANEL OVERLAY --}}

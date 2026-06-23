@@ -76,7 +76,7 @@ Route::get('/projects/tasks', function () {
     ];
 
     return view('projects.tasks.index', compact('projects', 'menu'));
-});
+})->name('projects.tasks');
 
 Route::get('/projects/{project}', [ProjectController::class, 'show'])
     ->middleware('auth');

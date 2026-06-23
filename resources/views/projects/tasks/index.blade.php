@@ -1,6 +1,6 @@
 @extends('layouts.projects-tasks') 
 
-@section('title', '(Project Name)')
+@section('title', 'Tasks - Aquaverse')
 
 @section('content')
     @php
@@ -40,7 +40,7 @@
             'priority' => 'Medium',
             'priorityColor' => 'bg-yellow-400',
             'dueDate' => '11/04/26',
-            'assignee' => 'Ziu Rama',
+            'collaborator' => 'Ziu Rama',
             'avatar' => $avatarPath,
             'image' => null,
             'lineColor' => 'bg-green-500',
@@ -52,7 +52,7 @@
             'priority' => 'High',
             'priorityColor' => 'bg-red-500',
             'dueDate' => '13/04/26',
-            'assignee' => 'Kevin Jio',
+            'collaborator' => 'Kevin Jio',
             'avatar' => $avatarPath,
             'image' => asset("images/prototype.png"),
             'lineColor' => 'bg-black',
@@ -64,7 +64,7 @@
             'priority' => 'Low',
             'priorityColor' => 'bg-indigo-500',
             'dueDate' => '13/04/26',
-            'assignee' => 'Jonea',
+            'collaborator' => 'Jonea',
             'avatar' => $avatarPath,
             'image' => null,
             'lineColor' => 'bg-black',
@@ -77,7 +77,7 @@
     <div class="bg-primary rounded-b-4xl px-8 py-6 flex flex-col lg:flex-row gap-4 justify-between shadow-md">
         <div>
             <div class="flex items-center gap-4">
-                <h1 class="font-montserrat text-white text-4xl font-bold">Project Name</h1>
+                <h1 class="font-montserrat text-white text-4xl font-bold">Aquaverse</h1>
                 
                 {{-- Collaborators Stack --}}
                 <div class="flex items-center -space-x-2">
@@ -137,15 +137,14 @@
     </div>
 
     {{-- PRIORITY TASKS --}}
-    <div x-data="{showTaskModal:false, showCreateModal:false}" class="p-8">
+    <div x-data="{showTaskModal:false, showCreateModal:false}" class="p-8 py-6">
         <h1 class="font-montserrat text-text-primary text-2xl font-bold">Priority Tasks</h1>
         
-        <div class="flex flex-nowrap overflow-x-auto gap-5 mt-4">
+        <div class="flex flex-nowrap overflow-x-auto gap-5 pt-4 pb-2">
             @foreach ($priorityTasks as $task)
                 <div class="shrink-0 w-[280px] sm:w-[320px]">
                     @include('projects.tasks.priority-card', [
                         'status' => $task['status'],
-                        'projectName' => $task['projectName'],
                         'title' => $task['title'],
                         'dueDate' => $task['dueDate'],
                         'daysLeft' => $task['daysLeft']
@@ -158,7 +157,7 @@
 
 
     {{-- TASKS LIST --}}
-    <div class="px-8 py-6">
+    <div class="px-8 pb-10">
         <div class="flex justify-between items-center">
             <h1 class="font-montserrat text-text-primary text-2xl font-bold">All Task</h1>
             
@@ -209,7 +208,7 @@
             </div>
         </div>
 
-        <div class="grid  grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
+        <div class="grid  grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-4">
             @foreach ($allTasks as $task)
                 @include('projects.tasks.all-task', $task)
             @endforeach

@@ -1,11 +1,11 @@
-<div class="project-container bg-background rounded-3xl p-5 shadow-sm relative pl-9 w-full flex flex-col h-full">
+<div class="project-container bg-background rounded-3xl p-5 shadow-sm relative pl-9 w-full flex flex-col h-full hover:shadow-md hover:-translate-y-0.5 transition-all">
     <div class="project-line absolute left-4 top-6 bottom-24 w-1 rounded-full" style="background-color: {{ $accentColor ?? 'bg-primary' }};"></div>
 
-    <div class="flex justify-between items-start mb-4 shrink-0">
-        <div class="p-2 rounded-xl flex justify-center items-center" style="background-color: {{ $accentColor }}">
+    <div class="flex justify-between items-start mb-2 shrink-0">
+        <div class="p-1.5 rounded-xl flex justify-center items-center" style="background-color: {{ $accentColor }}">
             <x-dynamic-component 
                 :component="'lucide-' . ($icon ?: 'folder')"
-                class="w-6 text-text-contrast" 
+                class="w-4 text-text-contrast" 
             />
         </div>
         @if ($progress < 100)
@@ -13,14 +13,14 @@
                 <div class="bg-pastel-yellow-background px-3 py-1 rounded-lg flex items-center justify-center">
                     <span class="font-montserrat text-pastel-yellow-text text-[12px] font-semibold leading-none">In Progress</span>
                 </div>
-                <x-lucide-clock class="w-8" />
+                <x-lucide-clock class="w-6" />
             </div>
         @else
             <div class="text-pastel-green-text flex flex-row gap-4 items-center">
                 <div class="bg-pastel-green-background px-3 py-1 rounded-lg flex items-center justify-center">
                     <span class="font-montserrat text-pastel-green-text text-[12px] font-semibold leading-none">Completed</span>
                 </div>
-                <x-lucide-circle-check-big class="w-8" />
+                <x-lucide-circle-check-big class="w-6" />
             </div>
         @endif
     </div>
@@ -70,7 +70,8 @@
         </div>
     </div>
 
-    <button class="text-text-primary w-full py-1.5 border-2 border-gray-100 shadow-sm rounded-full flex items-center justify-center gap-2 font-semibold text-sm hover:bg-surface transition-colors font-montserrat shrink-0">
-        Continue <x-lucide-eye class="w-5 h-5" />
-    </button>
+    <a href="{{ route('projects.tasks') }}" class="text-text-primary w-full py-1.5 border-2 border-gray-100 shadow-sm rounded-full flex items-center justify-center gap-2 font-semibold text-sm hover:bg-surface transition-colors font-montserrat shrink-0">
+        Continue
+        <x-lucide-eye class="w-5 h-5" />
+    </a>
 </div>
