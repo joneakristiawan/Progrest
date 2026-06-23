@@ -62,66 +62,50 @@
 
         {{-- Active Projects --}}
 
-        <div class="rounded-3xl bg-background shadow-sm flex flex-col lg:flex-row p-4 gap-3 items-center lg:items-start">
-            <div class="w-10 h-10 rounded-3xl bg-pastel-green-background flex justify-center items-center">
-                <x-lucide-folder-open class="w-5 text-pastel-green-text"/> 
-            </div>
-            <p class="text-text-primary text-4xl font-montserrat font-semibold">{{ count($projects) }}</p>
-            <div class="flex flex-col text-sm items-center lg:items-start">
-                <p class="text-text-primary font-montserrat font-semibold">Active Projects</p>
-                <div class="flex gap-1 items-center mt-0.5">
-                    <x-lucide-arrow-up class="text-pastel-green-text w-3" />
-                    <p class="text-text-secondary font-montserrat text-[12px]">20% from last week</p>
+        <div class="rounded-3xl bg-background shadow-sm flex flex-col p-4 gap-1 items-center">
+            <div class="flex gap-3">
+                <div class="w-10 h-10 rounded-3xl bg-pastel-green-background flex justify-center items-center">
+                    <x-lucide-folder-open class="w-5 text-pastel-green-text"/> 
                 </div>
+                <p class="text-text-primary text-3xl font-montserrat font-semibold">{{ count($projects) }}</p>
             </div>
+            <p class="text-text-primary text-sm font-montserrat">Active Projects</p>
         </div>
         
         {{-- Projects Completed --}}
 
-        <div class="rounded-3xl bg-background shadow-sm flex flex-col lg:flex-row p-4 gap-4 items-center lg:items-start">
-            <div class="w-10 h-10 rounded-3xl bg-pastel-blue-background flex justify-center items-center">
-                <x-lucide-folder-check class="w-5 text-pastel-blue-text"/> 
-            </div>
-            <p class="text-text-primary text-4xl font-montserrat font-semibold">5</p>
-            <div class="flex flex-col text-sm items-center lg:items-start">
-                <p class="text-text-primary font-montserrat font-semibold">Projects Done</p>
-                <div class="flex gap-1 items-center mt-0.5">
-                    <x-lucide-arrow-up class="text-pastel-green-text w-3" />
-                    <p class="text-text-secondary font-montserrat text-[12px]">100% from last week</p>
+        <div class="rounded-3xl bg-background shadow-sm flex flex-col p-4 gap-1 items-center">
+            <div class="flex gap-3">
+                <div class="w-10 h-10 rounded-3xl bg-pastel-blue-background flex justify-center items-center">
+                    <x-lucide-folder-check class="w-5 text-pastel-blue-text"/> 
                 </div>
+                <p class="text-text-primary text-3xl font-montserrat font-semibold">5</p>
             </div>
+            <p class="text-text-primary text-sm font-montserrat">Projects Done</p>
         </div>
 
         {{-- Projects Led --}}
 
-        <div class="rounded-3xl bg-background shadow-sm flex flex-col lg:flex-row p-4 gap-4 items-center lg:items-start">
-            <div class="w-10 h-10 rounded-3xl bg-pastel-yellow-background flex justify-center items-center">
-                <x-lucide-user-star class="w-5 text-pastel-yellow-text"/> 
-            </div>
-            <p class="text-text-primary text-4xl font-montserrat font-semibold">5</p>
-            <div class="flex flex-col text-sm items-center lg:items-start">
-                <p class="text-text-primary font-montserrat font-semibold">Projects Led</p>
-                <div class="flex gap-1 items-center mt-0.5">
-                    <x-lucide-arrow-up class="text-pastel-green-text w-3" />
-                    <p class="text-text-secondary font-montserrat text-[12px]">10% from last week</p>
+        <div class="rounded-3xl bg-background shadow-sm flex flex-col p-4 gap-1 items-center">
+            <div class="flex gap-3">
+                <div class="w-10 h-10 rounded-3xl bg-pastel-yellow-background flex justify-center items-center">
+                    <x-lucide-user-star class="w-5 text-pastel-yellow-text"/> 
                 </div>
+                <p class="text-text-primary text-3xl font-montserrat font-semibold">5</p>
             </div>
+            <p class="text-text-primary text-sm font-montserrat">Projects Led</p>
         </div>
 
         {{-- Team Members --}}
 
-        <div class="rounded-3xl bg-background shadow-sm flex flex-col lg:flex-row p-4 gap-4 items-center lg:items-start">
-            <div class="w-10 h-10 rounded-3xl bg-pastel-purple-background flex justify-center items-center">
-                <x-lucide-users class="w-5 text-pastel-purple-text"/> 
-            </div>
-            <p class="text-text-primary text-4xl font-montserrat font-semibold">5</p>
-            <div class="flex flex-col text-sm items-center lg:items-start">
-                <p class="text-text-primary font-montserrat font-semibold">Team Members</p>
-                <div class="flex gap-1 items-center mt-0.5">
-                    <x-lucide-arrow-up class="text-pastel-green-text w-3" />
-                    <p class="text-text-secondary font-montserrat text-[12px]">20% from last week</p>
+        <div class="rounded-3xl bg-background shadow-sm flex flex-col p-4 gap-1 items-center">
+            <div class="flex gap-3">
+                <div class="w-10 h-10 rounded-3xl bg-pastel-purple-background flex justify-center items-center">
+                    <x-lucide-users class="w-5 text-pastel-purple-text"/> 
                 </div>
+                <p class="text-text-primary text-3xl font-montserrat font-semibold">5</p>
             </div>
+            <p class="text-text-primary text-sm font-montserrat">Team Members</p>
         </div>
     </div>
 

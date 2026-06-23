@@ -1,4 +1,4 @@
-<div class="project-container bg-background rounded-3xl p-5 shadow-sm relative pl-9 w-full flex flex-col h-full">
+<div class="project-container bg-background rounded-3xl p-5 shadow-sm relative pl-9 w-full flex flex-col h-full hover:shadow-md hover:-translate-y-0.5 transition-all">
     <div class="project-line absolute left-4 top-6 bottom-24 w-1 rounded-full" style="background-color: {{ $accentColor ?? 'bg-primary' }};"></div>
 
     <div class="flex justify-between items-start mb-4 shrink-0">
