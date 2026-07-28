@@ -136,16 +136,19 @@ class TaskSubmissionController extends Controller{
         $reward = $task->go_collab_reward ?? 0;
 
         if ($task->go_collab_enabled) {
-            // Deduct the reward from each internal member
-            foreach ($task->users as $member) {
-                $member->decrement('points', $reward);
+        
+            $leader = $task->project->leader;
+            $reward = (int) ($task->go_collab_reward ?? 0);
+        
+            if ($leader->points < $reward) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Project Leader does not have enough credits.'
+                ], 422);
             }
+        
+            $leader->decrement('points', $reward);
             $submission->submitter->increment('points', $reward);
-        } else {
-            // Normal task: reward every assigned member.
-            foreach ($task->users as $member) {
-                $member->increment('points', $reward);
-            }
         }
 
         $submission->task->update([

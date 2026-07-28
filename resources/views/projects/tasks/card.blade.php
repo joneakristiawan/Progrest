@@ -134,7 +134,8 @@
                     ],
                 ])
             ),
-            leader_id: {{ $project->leader->id }}
+            leader_id: {{ $project->leader->id }},
+            leader_points: {{ (int) ($project->leader->points ?? 0) }}
         })"
         class="text-text-primary w-full py-1.5 border-2 border-gray-100 shadow-sm rounded-full flex items-center justify-center gap-2 font-semibold text-sm hover:bg-surface transition-colors font-montserrat shrink-0 cursor-pointer">
             {{ __('main.task.view') }}
