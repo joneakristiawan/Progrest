@@ -493,7 +493,7 @@
                     {{-- Member Selection --}}
 
                     <div
-                        x-data="memberSearch({{ $project->id }})"
+                        x-data="memberSearch()"
                         class="space-y-4 rounded-xl border-[1.5px] border-border p-4 flex flex-col relative"
                     >
 
@@ -501,7 +501,7 @@
                         <div class="flex flex-row items-center gap-2">
 
                             <div class="shadow-2xl shadow-pastel-blue-background">
-                                <x-lucide-users class="w-5 text-pastel-blue-text"/>
+                                <x-lucide-users class="w-5 text-pastel-green-text"/>
                             </div>
 
                             <p class="font-montserrat text-[14px] font-semibold text-text-primary">
@@ -749,9 +749,8 @@
 
     </div>
     <script>
-        function memberSearch(projectId) {
+        function memberSearch() {
             return {
-                projectId,
                 query: '',
                 users: [],
                 selectedUsers: [],
@@ -766,7 +765,7 @@
                     this.loading = true;
 
                     const response = await fetch(
-                        `/projects/${this.projectId}/members/search?q=${encodeURIComponent(this.query)}`
+                        `/users/search?q=${encodeURIComponent(this.query)}`
                     );
 
                     this.users = await response.json();

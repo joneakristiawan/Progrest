@@ -49,5 +49,12 @@ class UserSeeder extends Seeder
             'email' => 'collaborator5@example.com', 
             'password' => Hash::make('Collaborator5%')
         ]); 
+        $kevin = User::create([
+            'username' => 'Kevin', 
+            'name' => 'Kevin JK', 
+            'avatar' => '/images/user-avatars/collaborator5.jpg',
+            'email' => 'kevin@example.com', 
+            'password' => Hash::make('Kevin%')
+        ]);
     }
 }
