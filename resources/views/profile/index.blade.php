@@ -23,8 +23,7 @@
             <!-- EDIT -->
             <button
                 onclick="document.getElementById('editProfileModal').classList.remove('hidden')"
-                class="absolute top-3 right-3 md:top-5 md:right-5 bg-primary hover:bg-primary-hover cursor-pointer text-white px-3 py-2 md:px-5 text-sm md:text-base rounded-full font-montserrat font-semibold flex items-center gap-2 shadow-md"
-            >
+                class="absolute top-3 right-3 md:top-5 md:right-5 bg-primary hover:bg-primary-hover text-white px-3 py-2 md:px-5 text-xs md:text-base rounded-full flex items-center gap-2">
                 <x-lucide-pencil class="w-4 h-4" />
                 {{__('main.profile.edit-profile')}}
             </button>
@@ -32,10 +31,10 @@
         <!-- PROFILE CONTENT -->
         <div class="relative px-4 md:px-10 pb-5">
             <!-- AVATAR -->
-            <div class="absolute left-1/2 -translate-x-1/2 md:left-10 md:translate-x-0 -top-14">
+            <div class="mt-24 md:mt-0 md:absolute md:right-10 md:top-6 flex flex-col items-center md:items-start gap-2 text-text-secondary">
                 <img
                     src="{{ $avatarUrl }}"
-                    class="w-48 h-48 rounded-full object-cover border-[6px] border-background shadow-lg"
+                    class="w-32 h-32 md:w-48 md:h-48 rounded-full object-cover border-[6px] border-background shadow-lg"
                 >
             </div>
             <!-- LOCATION + JOINED -->
@@ -43,7 +42,7 @@
                 $u = auth()->user();
                 $place = collect([$u->city, $u->country])->filter()->implode(', ');
             @endphp
-            <div class="mt-2 mt-3 md:mt-0 md:absolute md:right-10 md:top-6 flex flex-col items-center md:items-start gap-2 text-text-secondary ">
+            <div class="mt-5 flex flex-col items-center md:items-start">
                 <div class="flex items-center gap-2">
                     <x-lucide-calendar class="w-4 h-4" />
                     {{__('main.profile.joined')}} {{ $u->created_at?->format('M Y') ?? 'Jan 2026' }}
@@ -123,7 +122,7 @@
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
 
         <!-- ABOUT -->
-        <div class="bg-background rounded-4xl p-7 shadow-sm border border-border flex flex-col h-[600px]">
+        <div class="bg-background rounded-4xl p-7 shadow-sm border border-border flex flex-col h-auto md:h-[600px]">
 
             <div class="flex flex-col flex-1 min-h-0">
 
