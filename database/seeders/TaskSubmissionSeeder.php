@@ -29,6 +29,7 @@ class TaskSubmissionSeeder extends Seeder
                     'notes' => 'Task completed and approved.',
 
                     'status' => 'approved',
+                    'submitted_at'  => now(),
                 ]);
             });
 
@@ -52,6 +53,7 @@ class TaskSubmissionSeeder extends Seeder
                     'notes' => 'Submitted work awaiting project leader review.',
 
                     'status' => 'pending',
+                    'submitted_at'  => now(),
                 ]);
             });
     }

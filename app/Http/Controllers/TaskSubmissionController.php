@@ -83,6 +83,7 @@ class TaskSubmissionController extends Controller{
             'notes' => $validated['notes'] ?? null,
 
             'status' => 'pending',
+            'submitted_at' => now(),
         ]);
 
         $task->update([

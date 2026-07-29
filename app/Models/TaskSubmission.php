@@ -13,6 +13,7 @@ class TaskSubmission extends Model{
         'proof_link',
         'notes',
         'status',
+        'submitted_at',
     ];
 
     protected $casts = [

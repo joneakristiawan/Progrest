@@ -81,7 +81,7 @@ class CollabController extends Controller{
         })
         // ->whereNotIn('status', ['completed', 'cancelled'])
         ->tap($searchFilter)
-        ->orderBy('deadline', 'asc')
+        ->orderByRaw("FIELD(status,'in_progress','pending','completed', 'cancelled')")
         ->take(3)
         ->get();
 
