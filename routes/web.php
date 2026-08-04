@@ -8,7 +8,6 @@ use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjectController;
-use App\Http\Controllers\ProjectMemberController;
 use App\Http\Controllers\ProjectTaskController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\TaskSubmissionController;
@@ -97,11 +96,6 @@ Route::middleware(['auth'])->group(function () {
         ->name('profile.update');
     
     Route::get('/projects/{id}', [ProjectTaskController::class, 'index'])->name('projects.tasks');
-
-    Route::get(
-        '/projects/{project}/members/search',
-        [ProjectMemberController::class, 'search']
-    );
 
     Route::delete(
         '/collab/{project}/leave',

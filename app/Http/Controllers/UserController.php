@@ -24,7 +24,11 @@ class UserController extends Controller
                     ->orWhere('username', 'like', "%{$search}%")
                     ->orWhere('email', 'like', "%{$search}%");
             })
-            ->limit(10)
+            // Rank prefix matches first so results aren't dominated by low-id
+            // (seeded) users when the limit is reached.
+            ->orderByRaw('CASE WHEN name LIKE ? OR username LIKE ? OR email LIKE ? THEN 0 ELSE 1 END', ["{$search}%", "{$search}%", "{$search}%"])
+            ->orderBy('name')
+            ->limit(15)
             ->get([
                 'id',
                 'name',
@@ -52,7 +56,9 @@ class UserController extends Controller
                     ->orWhere('username', 'like', "%{$search}%")
                     ->orWhere('email', 'like', "%{$search}%");
             })
-            ->limit(10)
+            ->orderByRaw('CASE WHEN name LIKE ? OR username LIKE ? OR email LIKE ? THEN 0 ELSE 1 END', ["{$search}%", "{$search}%", "{$search}%"])
+            ->orderBy('name')
+            ->limit(15)
             ->get([
                 'users.id',
                 'users.name',

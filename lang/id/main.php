@@ -267,7 +267,7 @@ return [
         "reg-username" => "Harus 4-8 karakter & unik",
         "reg-name" => "Harus 6-12 karakter",
         "reg-email" => "Harus sesuai & unik",
-        "reg-password" => "Harus 6-12 karakter alfanumerik",
+        "reg-password" => "8-12 karakter: huruf besar, kecil, angka & simbol",
         "new-password" => "Masukkan kata sandi baru",
         "confirm-password" => "Konfirmasi kata sandi baru",
         "search-project" => "Cari Proyek",

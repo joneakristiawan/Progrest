@@ -8,6 +8,7 @@ use App\Models\Task;
 use App\Notifications\ActivityNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\Rule;
 
 class ProjectTaskController extends Controller
 {
@@ -144,9 +145,10 @@ class ProjectTaskController extends Controller
             'priority' => 'required|in:low,medium,high',
             'status' => 'required|in:pending,in_progress',
 
-            // Assigned members
+            // Assigned members must belong to this project.
             'members' => 'nullable|array',
-            'members.*' => 'exists:users,id',
+            'members.*' => Rule::exists('project_user', 'user_id')
+                ->where('project_id', $project->id),
         ]);
 
         $validated['project_id'] = $project->id;
@@ -201,7 +203,10 @@ class ProjectTaskController extends Controller
             'deadline' => ['nullable', 'date'],
 
             'members' => ['array'],
-            'members.*' => ['exists:users,id'],
+            'members.*' => [
+                Rule::exists('project_user', 'user_id')
+                    ->where('project_id', $task->project_id),
+            ],
 
             'go_collab_enabled' => ['required', 'boolean'],
             'go_collab_description' => ['nullable', 'string'],
