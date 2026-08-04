@@ -214,6 +214,19 @@ class ProjectTaskController extends Controller
             'image' => 'nullable|image|max:4096',
         ]);
 
+        if ($validated['go_collab_enabled']) {
+            $task->load('project.leader');
+            $leader = $task->project->leader;
+            $leaderPoints = (int) ($leader->points ?? 0);
+            $reward = (int) ($validated['go_collab_reward'] ?? 0);
+            if ($reward > $leaderPoints) {
+                return response()->json([
+                    'success' => false,
+                    'message' => "Insufficient credits. Project Leader only has {$leaderPoints} credits."
+                ], 422);
+            }
+        }
+
         if ($request->hasFile('image')) {
             if ($task->image &&
                 Storage::disk('public')->exists($task->image)) {

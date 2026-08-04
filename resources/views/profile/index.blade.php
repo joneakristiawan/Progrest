@@ -14,7 +14,7 @@
 <div class="p-4 md:p-8 max-w-7xl mx-auto bg-linear-to-r from-surface to-background-gradient">
     <div class="bg-background rounded-4xl overflow-hidden shadow-sm border border-border mb-8">
         <!-- COVER -->
-        <div class="relative h-36 overflow-visible">
+        <div class="relative h-40 md:h-44 overflow-visible">
             <img
                 src="{{ $bannerUrl }}"
                 alt="Cover"
@@ -23,19 +23,18 @@
             <!-- EDIT -->
             <button
                 onclick="document.getElementById('editProfileModal').classList.remove('hidden')"
-                class="absolute top-3 right-3 md:top-5 md:right-5 bg-primary hover:bg-primary-hover cursor-pointer text-white px-3 py-2 md:px-5 text-sm md:text-base rounded-full font-montserrat font-semibold flex items-center gap-2 shadow-md"
-            >
+                class="absolute top-3 right-3 md:top-5 md:right-5 bg-primary hover:bg-primary-hover text-white px-3 py-2 md:px-5 text-xs md:text-base rounded-full flex items-center gap-2">
                 <x-lucide-pencil class="w-4 h-4" />
                 {{__('main.profile.edit-profile')}}
             </button>
         </div>
         <!-- PROFILE CONTENT -->
-        <div class="relative px-4 md:px-10 pb-5">
+        <div class="relative px-4 md:px-10 pb-8">
             <!-- AVATAR -->
             <div class="absolute left-1/2 -translate-x-1/2 md:left-10 md:translate-x-0 -top-14">
                 <img
                     src="{{ $avatarUrl }}"
-                    class="w-48 h-48 rounded-full object-cover border-[6px] border-background shadow-lg"
+                    class="w-32 h-32 md:w-48 md:h-48 rounded-full object-cover border-[6px] border-background shadow-lg"
                 >
             </div>
             <!-- LOCATION + JOINED -->
@@ -43,21 +42,22 @@
                 $u = auth()->user();
                 $place = collect([$u->city, $u->country])->filter()->implode(', ');
             @endphp
-            <div class="mt-2 mt-3 md:mt-0 md:absolute md:right-10 md:top-6 flex flex-col items-center md:items-start gap-2 text-text-secondary ">
+            <div class="hidden md:flex absolute right-10 top-6 flex-col items-start gap-2 text-text-secondary">
                 <div class="flex items-center gap-2">
-                    <x-lucide-calendar class="w-4 h-4" />
-                    {{__('main.profile.joined')}} {{ $u->created_at?->format('M Y') ?? 'Jan 2026' }}
+                    <x-lucide-calendar class="w-4 h-4"/>
+                    {{ __('main.profile.joined') }}
+                    {{ $u->created_at?->format('M Y') ?? 'Jan 2026' }}
                 </div>
-                @if ($place)
+                @if($place)
                     <div class="flex items-center gap-2">
-                        <x-lucide-map-pin class="w-4 h-4" />
+                        <x-lucide-map-pin class="w-4 h-4"/>
                         {{ $place }}
                     </div>
                 @endif
             </div>
 
             <!-- PROFILE INFO -->
-            <div class="pt-28 md:pt-6 md:ml-54 text-center md:text-left">
+            <div class="pt-24 md:pt-6 md:ml-56 text-center md:text-left">
                 <h1 class="font-montserrat text-2xl md:text-3xl font-bold break-words font-bold text-text-primary">
                     {{ auth()->user()->username }}
                 </h1>
@@ -65,11 +65,27 @@
                     {{ auth()->user()->name }}
                 </p>
                 <p class="mt-2 max-w-full md:max-w-lg break-words whitespace-pre-line font-montserrat text-text-secondary whitespace-pre-line">{{ auth()->user()->about ?: __('main.profile.no-bio') }}</p>
+                <div class="flex md:hidden flex-col items-center gap-2 mt-5 text-text-secondary">
+
+                    <div class="flex items-center gap-2">
+                        <x-lucide-calendar class="w-4 h-4"/>
+                        {{ __('main.profile.joined') }}
+                        {{ $u->created_at?->format('M Y') ?? 'Jan 2026' }}
+                    </div>
+                
+                    @if($place)
+                        <div class="flex items-center gap-2">
+                            <x-lucide-map-pin class="w-4 h-4"/>
+                            {{ $place }}
+                        </div>
+                    @endif
+                    
+                </div>
             </div>
         </div>
 
         <!-- STATS -->
-        <div class="px-8 pb-4">
+        <div class="px-4 md:px-8 pt-4 pb-4">
             <div class="grid grid-cols-2 md:grid-cols-4 bg-card border border-border rounded-3xl overflow-hidden">
                 <div class="flex flex-col items-center py-3">
                     <div class="row flex gap-1.5 mb-1">
@@ -123,7 +139,7 @@
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
 
         <!-- ABOUT -->
-        <div class="bg-background rounded-4xl p-7 shadow-sm border border-border flex flex-col h-[600px]">
+        <div class="bg-background rounded-4xl p-7 shadow-sm border border-border flex flex-col h-auto md:h-[600px]">
 
             <div class="flex flex-col flex-1 min-h-0">
 

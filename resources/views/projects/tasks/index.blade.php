@@ -2229,14 +2229,55 @@
 
                             <template x-if="editing">
                                 <div class="flex gap-2">
-                                    <button
-                                        type="button"
-                                        @click="save()"
-                                        class="bg-quartiary text-white px-5 py-2 rounded-2xl hover:bg-quartiary-hover transition cursor-pointer"
-                                    >
-                                        {{ __('main.task.save-changes') }}
-                                    </button>
+                                
+                                    <div class="relative group">
+                                        <button
+                                            type="button"
+                                            @click="save()"
+                                    
+                                            :disabled="
+                                                Boolean(task.go_collab_enabled) &&
+                                                Number(task.go_collab_reward || 0) > Number(task.leader_points || 0)
+                                            "
 
+                                            :class="
+                                                Boolean(task.go_collab_enabled) &&
+                                                Number(task.go_collab_reward || 0) > Number(task.leader_points || 0)
+                                                    ? 'bg-quartiary/40 cursor-not-allowed'
+                                                    : 'bg-quartiary hover:bg-quartiary-hover cursor-pointer'
+                                            "
+
+                                            class="text-white px-5 py-2 rounded-2xl transition"
+                                        >
+                                            {{ __('main.task.save-changes') }}
+                                        </button>
+                                    
+                                        <div
+                                            x-show="
+                                                Boolean(task.go_collab_enabled) &&
+                                                Number(task.go_collab_reward || 0) > Number(task.leader_points || 0)
+                                            "
+                                            class="absolute bottom-full left-0 mb-2
+                                                px-3 py-2
+                                                bg-gray-900 text-white
+                                                text-xs rounded-lg
+                                                whitespace-nowrap
+                                                opacity-0 group-hover:opacity-100
+                                                pointer-events-none
+                                                transition-opacity duration-200
+                                                shadow-lg z-50">
+                                            Insufficient credits. 
+                                            <span
+                                                class="font-semibold"
+                                                x-text="
+                                                    Number(task.go_collab_reward || 0) -
+                                                    Number(task.leader_points || 0)
+                                                "
+                                            ></span>
+                                            Credit(s) to go.
+                                        </div>
+                                    </div>
+                                
                                     <button
                                         type="button"
                                         @click="cancelEdit()"
@@ -2244,6 +2285,7 @@
                                     >
                                         {{ __('main.task.cancel') }}
                                     </button>
+                                
                                 </div>
                             </template>
                         </div>
