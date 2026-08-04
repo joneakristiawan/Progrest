@@ -267,7 +267,7 @@ return [
         "reg-username" => "Must be 4-8 characters & unique",
         "reg-name" => "Must be 6-12 characters",
         "reg-email" => "Must be appropriate & unique",
-        "reg-password" => "Must be 6-12 alphanumeric chars",
+        "reg-password" => "8-12 chars: upper, lower, number & symbol",
         "new-password" => "Enter new password",
         "confirm-password" => "Confirm new password",
         "search-project" => "Search Project",

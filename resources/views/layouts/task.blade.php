@@ -551,7 +551,7 @@
 
                     try {
                         const response = await fetch(
-                            `/users/search?q=${encodeURIComponent(this.assignedMemberQuery)}`
+                            `/projects/{{ $project->id }}/members/search?q=${encodeURIComponent(this.assignedMemberQuery)}`
                         );
 
                         const users = await response.json();
@@ -660,7 +660,7 @@
                     }
                     try {
                         const response = await fetch(
-                            `/users/search?q=${encodeURIComponent(this.memberQuery)}`
+                            `/projects/{{ $project->id }}/members/search?q=${encodeURIComponent(this.memberQuery)}`
                         );
                         const users = await response.json();
                         this.memberSearchResults = users.filter(user => {
@@ -975,7 +975,7 @@
 
                     try {
                         const response = await fetch(
-                            `/users/search?q=${encodeURIComponent(this.assignedMemberQuery)}`
+                            `/projects/{{ $project->id }}/members/search?q=${encodeURIComponent(this.assignedMemberQuery)}`
                         );
 
                         // Jaga supaya assigned user nda muncul di dropdown lagi 
